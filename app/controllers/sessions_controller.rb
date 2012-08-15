@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
         if user.first_name.blank?
           redirect_to(user_additional_info_path(user))
         else
-          redirect_to(session[:redirect_to] || root_path)
+          redirect_to(session[:redirect_to] || user_path(user))
         end
       when :failure
         render :action => 'problem'
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    flash[:success] = 'Signed out successfully'
+    flash[:notice] = 'Signed out successfully'
     session[:user_id] = nil
     redirect_to root_path
   end
