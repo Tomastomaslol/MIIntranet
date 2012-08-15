@@ -1,5 +1,5 @@
 <% provide(:title, @user.first_name) %>
 <h1>
-  <%= gravatar_for @user %>
-  <%= full_name_for(user) %>
+  <%= link_to gravatar_for(@user, size: 52), 'https://en.gravatar.com/site/login', target: '_blank' %>
+  <%= full_name_for(@user) %>
 </h1>
