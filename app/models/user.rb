@@ -10,7 +10,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email
+  attr_accessible :first_name, :last_name, :email, :identifier_url
 
   before_save { self.email.downcase! }
 

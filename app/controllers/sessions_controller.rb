@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
                               :first_name => ax.get_single('http://axschema.org/namePerson/first'),
                               :last_name => ax.get_single('http://axschema.org/namePerson/last'))
         session[:user_id] = user.id
+        flash[:success] = 'Signed in successfully'
         if user.first_name.blank?
           redirect_to(user_additional_info_path(user))
         else
@@ -37,6 +38,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    flash[:success] = 'Signed out successfully'
     session[:user_id] = nil
     redirect_to root_path
   end
