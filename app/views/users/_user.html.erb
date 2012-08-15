@@ -3,7 +3,7 @@
   <%= link_to full_name_for(user) , user %>
   <span class="capsemail"><%= user.email %></span>
   <% if current_user.admin? && !current_user?(user) %>
-      | <%= link_to "delete", user, method: :delete,
+  <%= link_to raw("<i class='icon-trash'></i>"), user, method: :delete,
                                     data: { confirm: "You sure?" } %>
     <% end %>
 </li>
