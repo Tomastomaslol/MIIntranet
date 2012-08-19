@@ -4,6 +4,8 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "event_calendar", media: "all" %>
+    <%= javascript_include_tag "event_calendar" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
   </head>

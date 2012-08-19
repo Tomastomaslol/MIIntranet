@@ -12,6 +12,9 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem "ruby-openid"
 gem "rack-openid"
 
+#Calendar view
+gem 'event-calendar', :require => 'event_calendar'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
