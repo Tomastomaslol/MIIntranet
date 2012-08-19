@@ -4,4 +4,6 @@ module SessionsHelper
     user == current_user
   end
   
+  
+  
 end

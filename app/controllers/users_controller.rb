@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :ensure_signed_in
   before_filter :admin_user,     only: :destroy
+  before_filter :correct_user, only: [:edit, :update]
   
   def index
     @users = User.paginate(page: params[:page])
@@ -30,8 +31,33 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
   private
   def admin_user
     redirect_to(root_path) unless current_user.admin?
+  end
+  
+  def signed_in_user
+    redirect_to signin_url, notice: "Please sign in." unless signed_in?
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    if !current_user?(@user)
+      flash[:error] = 'Incorrect user permissions'
+      redirect_to(user_path)
+    end
   end
 end

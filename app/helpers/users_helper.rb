@@ -9,7 +9,11 @@ module UsersHelper
   end
 
   def full_name_for(user)
-    user.first_name + ' ' + user.last_name
+    first = user.first_name || 'BlankFirstName'
+    last = user.last_name || 'BlankLastName'  
+      first + ' ' + last 
   end
+
+  
 
 end

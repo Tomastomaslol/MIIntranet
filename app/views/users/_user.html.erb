@@ -4,6 +4,6 @@
   <span class="capsemail"><%= user.email %></span>
   <% if current_user.admin? && !current_user?(user) %>
   <%= link_to raw("<i class='icon-trash'></i>"), user, method: :delete,
-                                    data: { confirm: "You sure?" } %>
+                                    data: { confirm: "Really Delete?" } %>
     <% end %>
 </li>
