@@ -9,6 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  userid     :integer
+#  user_id    :integer
 #
 
 class Event < ActiveRecord::Base
