@@ -1,7 +1,12 @@
 HolidayCalendar::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:create]
   resources :events, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
