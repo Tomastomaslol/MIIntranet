@@ -1,8 +1,25 @@
 <% provide(:title, @user.first_name) %>
-<h1>
-  <%= link_to gravatar_for(@user, size: 52), 'https://en.gravatar.com/site/login', target: '_blank' %>
-  <%= full_name_for(@user) %>
-</h1>
-<h5>
-<%= @user.email%>
-</h5>
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+			  <%= link_to gravatar_for(@user, size: 52), 'https://en.gravatar.com/site/login', target: '_blank' %>
+			  <%= full_name_for(@user) %>
+			</h1>
+		</section>
+		<h5>
+			<%= @user.email%>
+		</h5>
+	</aside>
+	<div class="span8">
+		<% if @user.events.any? %>
+			<h3>Events (<%= @user.events.count %>)</h3>
+	  	  	<ol class="events">
+	    		<%= render @events %>
+	  		</ol>
+	  	  	<%= will_paginate @events %>
+		<% end %>
+	</div>
+</div>
+
+

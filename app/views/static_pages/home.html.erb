@@ -1,11 +1,28 @@
-<div class="center hero-unit">
-  <h1>MI Holiday Calendar</h1>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/event_form' %>
+      </section>
+    </aside>
+	<div class="span8">
+      <h3>Event Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>  
+<% else %>
+	<div class="center hero-unit">
+	  <h1>MI Holiday Calendar</h1>
 
-  <h2>
-    This doesn't do much...yet
-  </h2>
+	  <h2>
+	    This doesn't do much...yet
+	  </h2>
 
-  <%= link_to "Sign in!", signin_path, class: "btn btn-large btn-primary" %>
-</div>
+	  <%= link_to "Sign in!", signin_path, class: "btn btn-large btn-primary" %>
+	</div>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+	<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% end %>

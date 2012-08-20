@@ -1,4 +1,8 @@
 HolidayCalendar::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:create]
+  resources :events, only: [:create, :destroy]
+  
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   get "users/new"
@@ -10,10 +14,8 @@ HolidayCalendar::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
-  resource :session
-  resources :users
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

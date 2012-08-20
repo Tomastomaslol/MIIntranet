@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         :required => ["http://axschema.org/contact/email",
                       "http://axschema.org/namePerson/first",
                       "http://axschema.org/namePerson/last"],
-        :return_to => session_url,
+        :return_to => sessions_url,
         :method => 'POST')
     head 401
   end
