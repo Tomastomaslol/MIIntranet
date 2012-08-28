@@ -177,13 +177,23 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
-  width: 90%;
+  width: 96%;
   padding: 10px;
   height: auto;
   margin-bottom: 15px;
   
+}
+
+select {
+    background: #555;
+	border: 1px solid #ccc;
+    width: auto;
+    padding: 5px;
+    height: auto;
+    margin-bottom: 5px;
+	color: white;
 }
 
 #error_explanation {
@@ -217,6 +227,21 @@ input, textarea, select, .uneditable-input {
    }
  }
  
+ 
+.select-right {
+ 	float:right;
+ 	padding-right: 18px;
+}
+
+.title-left {
+	float:left;
+	padding-top: 3px;
+	padding-left: 16px;
+	padding-bottom: 8px;
+	color:gray;
+}
+
+
  /* events */
 
  .events {

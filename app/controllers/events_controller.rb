@@ -7,8 +7,10 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(params[:event])
+    user = current_user 
+    user.events << @event
     if @event.save
-      flash[:success] = "Event added"
+      flash[:success] = "Event added UserID:#{current_user.id} and EventID:#{@event.id}"
       redirect_to root_url
     else
       @feed_items = []

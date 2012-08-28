@@ -2,6 +2,22 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_field :name, placeholder: "Event Name" %>
+	<br>
+	<span class="title-left">start</span>
+	<span class="select-right">
+	<%= date_select :event, :start_at, :order => [:day, :month, :year], :default => 3.days.from_now %>
+	</span>
+	<br>
+	<span class="title-left">end</span>
+	<span class="select-right">
+		<%= date_select :event, :end_at, 
+				:order => [:day, :month, :year], :class=>"style='float:right'", :default => 7.days.from_now %>
+	</span>
+	<br>
+	<span>
+		
+	</span>
+	
   </div>
   <%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>

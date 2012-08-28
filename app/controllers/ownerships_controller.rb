@@ -1,0 +1,5 @@
+class OwnershipsController < ApplicationController
+  
+
+  
+end

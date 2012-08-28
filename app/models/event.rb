@@ -16,11 +16,15 @@ class Event < ActiveRecord::Base
   has_event_calendar
   attr_accessible :name, :start_at, :end_at, :user_id
   belongs_to :user
+  has_many :ownerships
+  has_many :users, through: :Ownerships
   
   validates :name, presence: true
   validates :user_id, presence: true
   
   default_scope order: 'events.created_at DESC'
+  
+  after_create :create_ownership
   
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
@@ -28,4 +32,9 @@ class Event < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
           user_id: user.id)
   end
+  
+  def create_ownership
+    Ownership.create event_id: self.id, user_id: user.id
+  end
+  
 end
