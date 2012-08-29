@@ -1,9 +1,14 @@
-<% provide(:title, 'View Event') %>
-<h1>Event Details</h1>
+<% provide(:title, @event.name) %>
+<h1><%= @event.name %></h1>
+<h2><%= link_to full_name_for(@user), @user %></h2>
 
+<h4>Start Date:</h4> <h3><%= @event.start_at.to_date.strftime("%d/%m/%Y") %></h3><br>
+<h4>End Date:</h4> <h3><%= @event.end_at.to_date.strftime("%d/%m/%Y") %></h3>
 
-Name: <%= @event.name %><br>
-Start Date: <%= @event.start_at.to_date.strftime("%d/%m/%Y") %><br>
-End Date: <%= @event.end_at.to_date.strftime("%d/%m/%Y") %>
-<br><br>
-OwnerID: <%= @event.user_id %><br>
+<% if current_user?(@user) %>
+
+<div class="delete-link">
+<%= link_to "Delete this Event", @event, method: :delete,
+                                  data: { confirm: "Really Delete?" } %>
+</div>		  
+<% end %>

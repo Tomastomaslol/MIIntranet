@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    @user = User.find(@event.user_id)
   end
 
   def create
@@ -21,7 +22,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to root_url
+    redirect_to calendar_path
   end
   
   private

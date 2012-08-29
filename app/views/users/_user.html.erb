@@ -5,5 +5,16 @@
   <% if current_user.admin? && !current_user?(user) %>
   <%= link_to raw("<i class='icon-trash'></i>"), user, method: :delete,
                                     data: { confirm: "Really Delete?" } %>
-    <% end %>
+  <% end %><br>
+  <% if signed_in? %>
+  	<% unless current_user?(user) %>
+    	<span class="index-follow-right">
+		<% if current_user.following?(user) %>
+			<span>Following</span>
+    	<% else %>
+			<span>Not Following</span>
+    	<% end %>
+    	</span>
+  <% end %>
+  <% end %>
 </li>

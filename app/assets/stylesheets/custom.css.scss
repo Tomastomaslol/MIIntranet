@@ -233,6 +233,10 @@ select {
  	padding-right: 18px;
 }
 
+.index-follow-right{
+	float: right;
+}
+
 .title-left {
 	float:left;
 	padding-top: 3px;
@@ -255,6 +259,28 @@ select {
  }
  .content {
    display: block;
+   a {
+     color: gray;
+     &:hover {
+       text-decoration: none;
+       color: $blue;
+     }
+   }
+ }
+ .content-date {
+   color: gray;
+   font-size: 90%;
+ }
+ .delete-link {
+ float:right;
+   display: block;
+   a {
+     color: gray;
+     &:hover {
+       text-decoration: none;
+       color: $blue;
+     }
+   }
  }
  .timestamp {
    color: $grayLight;
