@@ -1,5 +1,13 @@
-<li>
-  <%= link_to gravatar_for(user, size: 52), 'https://en.gravatar.com/site/login', target: '_blank' %>
+<% if current_user?(user) %>
+	<li class="current-user-row">
+<% else %>
+	<% if current_user.following?(user) %>
+		<li class="following-user-row">
+		<% else %>
+		<li class="notfollowing-user-row">
+		<% end %>
+<% end %>
+  <span class="gravatar-padded"><%= link_to gravatar_for(user, size: 52), 'https://en.gravatar.com/site/login', target: '_blank' %></span>
   <%= link_to full_name_for(user) , user %>
   <span class="capsemail"><%= user.email %></span>
   <% if current_user.admin? && !current_user?(user) %>
@@ -8,11 +16,11 @@
   <% end %><br>
   <% if signed_in? %>
   	<% unless current_user?(user) %>
-    	<span class="index-follow-right">
+    	<span>
 		<% if current_user.following?(user) %>
-			<span>Following</span>
+			<span class="following-text">Following</span>
     	<% else %>
-			<span>Not Following</span>
+			<span class="notfollowing-text">Not Following</span>
     	<% end %>
     	</span>
   <% end %>

@@ -175,6 +175,11 @@ aside {
   margin-right: 10px;
 }
 
+.gravatar-padded{
+	padding-left: 10px;
+    float: left;
+}
+
 /* forms */
 
 input, textarea, .uneditable-input {
@@ -235,6 +240,30 @@ select {
 
 .index-follow-right{
 	float: right;
+}
+
+.current-user-row{
+	background-color: #FFFFF3;
+}
+
+.following-user-row{
+	background-color: #F6F9ED;
+}
+
+.notfollowing-user-row{
+	background-color: #FEF1E9;
+}
+
+.following-text{
+	float: right;
+	color: #458B00;
+	padding-right: 10px;
+}
+
+.notfollowing-text{
+	float: right;
+	color: #8B0000;
+	padding-right: 10px;
 }
 
 .title-left {
