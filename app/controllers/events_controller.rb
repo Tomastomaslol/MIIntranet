@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_filter :ensure_signed_in, only: [:create, :destroy]
   before_filter :correct_user, only: :destroy
 
-  def index
+  def show
+    @event = Event.find_by_id(params[:id])
   end
 
   def create
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
     user = current_user 
     user.events << @event
     if @event.save
-      flash[:success] = "Event added UserID:#{current_user.id} and EventID:#{@event.id}"
+      flash[:success] = "Event added"
       redirect_to root_url
     else
       @feed_items = []

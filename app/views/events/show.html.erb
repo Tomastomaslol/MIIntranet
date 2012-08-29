@@ -1,0 +1,9 @@
+<% provide(:title, 'View Event') %>
+<h1>Event Details</h1>
+
+
+Name: <%= @event.name %><br>
+Start Date: <%= @event.start_at.to_date.strftime("%d/%m/%Y") %><br>
+End Date: <%= @event.end_at.to_date.strftime("%d/%m/%Y") %>
+<br><br>
+OwnerID: <%= @event.user_id %><br>
