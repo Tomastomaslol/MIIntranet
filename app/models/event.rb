@@ -21,6 +21,9 @@ class Event < ActiveRecord::Base
   
   validates :name, presence: true
   validates :user_id, presence: true
+  validates :start_at, :presence => { :message => "must have a start date/time"}
+  validates :end_at, :presence => { :message => "must have an end date/time"}
+  validate :start_at_must_be_before_end_at
   
   default_scope order: 'events.created_at DESC'
   
@@ -35,6 +38,11 @@ class Event < ActiveRecord::Base
   
   def create_ownership
     Ownership.create event_id: self.id, user_id: user.id
+  end
+  
+  def start_at_must_be_before_end_at
+    errors.add(:end_at, "must be after end date/time") unless
+    self.start_at < self.end_at    
   end
   
 end

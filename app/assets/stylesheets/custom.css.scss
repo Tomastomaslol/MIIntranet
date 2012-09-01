@@ -192,13 +192,10 @@ input, textarea, .uneditable-input {
 }
 
 select {
-    background: #555;
-	border: 1px solid #ccc;
     width: auto;
     padding: 5px;
     height: auto;
     margin-bottom: 5px;
-	color: white;
 }
 
 #error_explanation {
@@ -268,9 +265,9 @@ select {
 
 .title-left {
 	float:left;
-	padding-top: 3px;
+	padding-top: 2px;
 	padding-left: 16px;
-	padding-bottom: 8px;
+	padding-bottom: 4px;
 	color:gray;
 }
 
@@ -300,7 +297,7 @@ select {
    color: gray;
    font-size: 90%;
  }
- .delete-link {
+ .event-modify-link {
  float:right;
    display: block;
    a {
@@ -323,4 +320,12 @@ select {
      height: 100px;
      margin-bottom: 5px;
    }
+ }
+ 
+ .submit-button-down{
+ 	margin-top: 15px;
+ }
+ 
+ .cancel-button-down{
+ 	margin-top: 13px;
  }

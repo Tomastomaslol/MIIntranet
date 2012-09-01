@@ -5,8 +5,8 @@
   </span>
   <span class="content">
 	  <%= link_to feed_item.name, feed_item %>
-  	  <span class="content-date">(<%= feed_item.start_at.to_date.strftime("%d %b") %> 
-		  - <%= feed_item.end_at.to_date.strftime("%d %b") %>)</span>
+  	  <span class="content-date">(from <%= feed_item.start_at.to_date.strftime("%d %b") %> 
+		  for <%= distance_of_time_in_words(feed_item.start_at, feed_item.end_at) %>)</span>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.

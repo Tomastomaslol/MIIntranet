@@ -1,0 +1,26 @@
+<% provide(:title, "Edit event") %> 
+<h1>Change the event</h1>
+<div class="row">
+  <div class="span4 offset4">
+<%= form_for(@event) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+		<div class="field">
+			<%= f.text_field :name, placeholder: "Title/Location" %>
+			<br>
+			<span class="title-left">start</span>
+			<span class="select-right">
+				<%= date_select :event, :start_at, :order => [:day, :month, :year]%>
+			</span>
+			<br>
+			<span class="title-left">end</span>
+			<span class="select-right">
+				<%= date_select :event, :end_at, 
+						:order => [:day, :month, :year], :class=>"style='float:right'", :default => 7.days.from_now %>
+			</span>
+			<br>	
+		</div>
+		<%= f.submit "Save Changes", class: "btn btn-small btn-primary submit-button-down" %>
+		<a href="javascript:history.back()" class="btn btn-small cancel-button-down" type="button">Cancel</a>
+<% end %>
+</div>
+</div>
