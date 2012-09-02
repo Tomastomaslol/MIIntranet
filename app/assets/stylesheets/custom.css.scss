@@ -263,12 +263,21 @@ select {
 	padding-right: 10px;
 }
 
-.title-left {
+.title-left-start {
 	float:left;
 	padding-top: 2px;
 	padding-left: 16px;
 	padding-bottom: 4px;
 	color:gray;
+}
+
+.title-left-end {
+	float:left;
+	padding-top: 2px;
+	padding-left: 16px;
+	padding-bottom: 4px;
+	color:gray;
+	margin-top: 5px;
 }
 
 

@@ -5,7 +5,7 @@
   </span>
   <span class="content">
 	  <%= link_to feed_item.name, feed_item %>
-  	  <span class="content-date">(from <%= feed_item.start_at.to_date.strftime("%d %b") %> 
+  	  <span class="content-date">(from <%= link_to feed_item.start_at.to_date.strftime("%d %b"), calendar_path + "/" + feed_item.start_at.year.to_s + "/" + feed_item.start_at.month.to_s %> 
 		  for <%= distance_of_time_in_words(feed_item.start_at, feed_item.end_at) %>)</span>
   </span>
   <span class="timestamp">

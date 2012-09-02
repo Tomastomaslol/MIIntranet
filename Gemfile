@@ -7,7 +7,8 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'bootstrap-datepicker-rails'
+#gem 'bootstrap-datepicker-rails' + add *= require bootstrap-datepicker to application.css
+# and //= require bootstrap-datepicker in application.js
 
 #Google auth gems
 gem "ruby-openid"

@@ -15,7 +15,7 @@ HolidayCalendar::Application.routes.draw do
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
-  match '/help',    to: 'static_pages#help'
+  match '/useful',  to: 'static_pages#useful'
   match '/about',   to: 'static_pages#about'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

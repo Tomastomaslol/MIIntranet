@@ -33,6 +33,7 @@
 .ec-month-name {
   font-size: 16px;
   font-weight: bold;
+	padding-bottom: 10px;
 }
 
 .ec-month-nav {

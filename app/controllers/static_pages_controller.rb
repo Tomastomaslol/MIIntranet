@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_filter :ensure_signed_in, only: :useful
+  
   def home
     if signed_in?
       @event = current_user.events.build
@@ -6,6 +8,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def help
+  def useful
   end
 end

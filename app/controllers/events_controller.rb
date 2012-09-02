@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     @event = current_user.events.build(params[:event])
     user = current_user 
     user.events << @event
+    
     if @event.save
       flash[:success] = "Event added"
       redirect_to root_url
