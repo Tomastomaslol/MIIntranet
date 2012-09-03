@@ -1,12 +1,14 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<div class="input-append">
 <%= form_tag users_path, :method => 'get' do %>  
   <p>  
-    <%= text_field_tag :search %>
-		<%= submit_tag "Search", :name => nil, :class => 'btn btn-large' %>  
+    <%= text_field_tag :search, nil, :class => 'span2' %>
+		<%= submit_tag "Search", :name => nil, :class => 'btn btn' %>  
   </p>  
 <% end %> 
+</div>
 
 <%= will_paginate %>
 

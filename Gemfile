@@ -40,6 +40,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'simple_form'
 
 group :test do
   gem 'capybara', '1.1.2'
