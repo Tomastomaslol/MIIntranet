@@ -48,4 +48,12 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id).destroy
   end
   
+  def self.search(search)
+    if search
+      where('first_name LIKE ? OR last_name LIKE ?', "%#{search}%","%#{search}%")
+    else
+      scoped
+    end
+  end
+  
 end
