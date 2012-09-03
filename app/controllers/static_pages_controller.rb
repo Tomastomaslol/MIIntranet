@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  include static_pages_helper
   before_filter :ensure_signed_in, only: :useful
   
   def home
