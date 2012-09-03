@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
   
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], order: "first_name, last_name")
   end
   
   def show
     @user = User.find(params[:id])
     @events = @user.events.paginate(page: params[:page])
-    @event = current_user.events.build
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @event = @user.events.build
+    @feed_items = @user.feed.paginate(page: params[:page])
   end
 
   def create

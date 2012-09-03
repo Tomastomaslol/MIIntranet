@@ -12,19 +12,42 @@ module StaticPagesHelper
     end
     rss = RSS::Parser.parse(content, false)
     html = raw("<ul>")
-    rss.items.first(100).each do |i|
-      html << raw("<li>")
-      html << raw("<a href='#{i.link}'>#{i.title}</a> - #{i.date.strftime("%H:%M, %d %b %y")}</li>")
+    rss.items.first(50).each do |i|
+      if i.date > session[:last_visit]
+        html << raw("<li class='rss-unread'>")
+        html << raw("#{i.date.strftime("%d %b %y, %H:%M")} - <a href='#{i.link}'>#{i.title}</a></li>")
+      else
+        html << raw("<li class='rss-read'>")
+        html << raw("#{i.date.strftime("%d %b %y, %H:%M,")} - <a href='#{i.link}'>#{i.title}</a></li>")
+      end
     end
     html << raw("</ul>")
   end
+  
+  
+  
+# session[:last_visit]
+  
+  
+  
+  def create_cookie
+    cookies.signed[:last_visit_datetime] = 
+    {
+      :value => DateTime.now,
+      :expires => 1.month.from_now
+    }
+  end
+  
+  def cookie_values
+    cookies.signed[:last_visit_datetime]
+  end
+  
+  def add_value_to_cookie(value)
+    cookies[:last_visit_datetime] = value
+  end
+  
+  def cookie_exists?
+    cookies[:last_visit_datetime].present?
+  end
+  
 end
-
-
-#@users = User.paginate(page: params[:page])
-
-
-
-
-#html << "</ul>"
-#html

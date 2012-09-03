@@ -20,8 +20,8 @@
 		<% if @user.events.any? %>
 			<h3>Events (<%= @user.events.count %>)</h3>
 	  	  	<ol class="events">
-	    		<%= render 'shared/feed' %>
-	  		</ol>
+	    			<%= render 'shared/feed' %>
+	  			</ol>
 	  	  	<%= will_paginate @events %>
 		<% end %>
 	</div>
