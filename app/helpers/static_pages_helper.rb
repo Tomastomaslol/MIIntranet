@@ -25,11 +25,6 @@ module StaticPagesHelper
   end
   
   
-  
-# session[:last_visit]
-  
-  
-  
   def create_cookie
     cookies.signed[:last_visit_datetime] = 
     {
