@@ -23,26 +23,5 @@ module StaticPagesHelper
     end
     html << raw("</ul>")
   end
-  
-  
-  def create_cookie
-    cookies.signed[:last_visit_datetime] = 
-    {
-      :value => DateTime.now,
-      :expires => 1.month.from_now
-    }
-  end
-  
-  def cookie_values
-    cookies.signed[:last_visit_datetime]
-  end
-  
-  def add_value_to_cookie(value)
-    cookies[:last_visit_datetime] = value
-  end
-  
-  def cookie_exists?
-    cookies[:last_visit_datetime].present?
-  end
-  
+    
 end

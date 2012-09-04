@@ -10,12 +10,37 @@ class StaticPagesController < ApplicationController
 
   def useful
     if cookie_exists?
-      session[:last_visit] = cookie_values
-      add_value_to_cookie(DateTime.now)
+      add_to_session_value(cookie_values)
+      add_to_cookie_value(DateTime.now)
     else
       create_cookie
-      add_value_to_cookie(DateTime.now)
-      session[:last_visit] = '2012-09-01T00:00:00+01:00'
+      add_to_session_value('2012-07-01T00:00:00+01:00')
     end
+  end
+  
+  
+  private
+  def create_cookie
+    cookies[:last_visit_datetime] = 
+    {
+      :value => DateTime.now,
+      :expires => 1.month.from_now
+    }
+  end
+  
+  def cookie_exists?
+    cookies[:last_visit_datetime].present?
+  end
+  
+  def cookie_values
+    cookies[:last_visit_datetime]
+  end
+  
+  def add_to_session_value(value)
+    session[:last_visit] = value
+  end
+  
+  def add_to_cookie_value(value)
+    cookies[:last_visit_datetime] = value
   end
 end
