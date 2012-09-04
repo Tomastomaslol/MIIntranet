@@ -17,6 +17,11 @@ class CalendarController < ApplicationController
     @event_strips = Event.event_strips_for_month(@shown_month, @first_day_of_week,
                       :include=> :ownerships, :conditions => ['ownerships.user_id in (?)',ownerships_user_id_list]) 
     
+    
+    @user = current_user
+    @event = current_user.events.build
+    @events = current_user.events.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(page: params[:page], :per_page => 3)
   end
   
 end
