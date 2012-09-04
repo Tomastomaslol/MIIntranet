@@ -9,7 +9,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 #gem 'bootstrap-datepicker-rails' + add *= require bootstrap-datepicker to application.css
 # and //= require bootstrap-datepicker in application.js
-
+gem 'feedzirra'
 
 #Google auth gems
 gem "ruby-openid"
