@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_filter :ensure_signed_in, only: :useful
+  before_filter :ensure_signed_in, only: [:rss, :useful]
   
   def home
     if signed_in?
@@ -8,16 +8,18 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def useful
+  def rss
     if cookie_exists?
-      add_to_session_value(cookie_values)
-      add_to_cookie_value(DateTime.now)
+      add_to_session_value(cookie_values) unless (cookie_values.to_f - session_values.to_f < 300)
+      add_to_cookie_value(DateTime.now.to_f)
     else
       create_cookie
-      add_to_session_value('2012-07-01T00:00:00+01:00')
+      add_to_session_value((DateTime.now - 1.month).to_f)
     end
   end
   
+  def useful
+  end
   
   private
   def create_cookie
@@ -34,6 +36,10 @@ class StaticPagesController < ApplicationController
   
   def cookie_values
     cookies[:last_visit_datetime]
+  end
+  
+  def session_values
+    session[:last_visit]
   end
   
   def add_to_session_value(value)
